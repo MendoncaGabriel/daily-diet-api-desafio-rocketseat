@@ -24,4 +24,6 @@
 - O usuário só pode visualizar, editar e apagar as refeições o qual ele criou
 
 ### Contexto da aplicação
-É comum ao estar desenvolvendo uma API, imaginar como esses dados vão estar sendo utilizados pelo cliente web e/ou mobile.
+É comum ao estar desenvolvendo uma API, imaginar como esses dados vão estar sendo utilizados pelo cliente web e/ou mobile.]
+
+
