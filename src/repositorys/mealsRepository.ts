@@ -1,7 +1,14 @@
-import { knex } from "../database/knex_db"
+export interface Meal {
+  id: string,
+  user_id: string,
+  name: string,
+  description: string,
+  is_on_diet: boolean,
+  date: Date
+}
 
-class Meals {
-  async create(
+export interface MealsRepository {
+  create(
     data: {
       id: string,
       user_id: string,
@@ -10,11 +17,9 @@ class Meals {
       is_on_diet: boolean
       date: Date
     }
-  ) {
-    await knex('meals').insert(data)
-  }
+  ): Promise<void>
 
-  async update(
+  update(
     { id, data }: {
       data: {
         id: string,
@@ -26,32 +31,17 @@ class Meals {
       },
       id: string
     }
-  ) {
-    await knex('meals').where({ id }).update({
-      id, data
-    })
-  }
+  ): Promise<void>
 
-  async delete(
+  delete(
     { id }: { id: string }
-  ) {
-    await knex('meals').where({ id }).delete()
-  }
+  ): Promise<void>
 
-  async listUserMeals(
+  listUserMeals(
     { user_id }: { user_id: string }
-  ) {
-    const meals = await knex('meals').where({ user_id }).select()
-    return meals
-  }
+  ): Promise<Meal[]>
 
-  async listMealById(
+  listMealById(
     { id }: { id: string }
-  ) {
-    const meal = await knex('meals').where({ id }).select()
-    return meal
-  }
-
+  ): Promise<Meal>
 }
-
-export { Meals }
