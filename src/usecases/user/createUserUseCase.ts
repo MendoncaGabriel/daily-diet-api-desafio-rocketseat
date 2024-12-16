@@ -7,13 +7,13 @@ class CreateUserUseCase {
   ){}
 
   async execute(
-    {email, name, session_id}: {
+    {email, name}: {
       email: string,
       name: string,
-      session_id: string
     }
   ){  
     const id = randomUUID()
+    const session_id = randomUUID()
     
     await this.userRepository.create({
       id,
