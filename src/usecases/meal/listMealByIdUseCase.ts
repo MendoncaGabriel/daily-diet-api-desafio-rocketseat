@@ -9,6 +9,7 @@ class ListMealByIdUseCase {
     { id }: { id: string }
   ) {
     const meal = await this.mealRepository.listMealById({ id })
+    return meal
   }
 }
 

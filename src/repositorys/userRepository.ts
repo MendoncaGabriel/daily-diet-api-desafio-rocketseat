@@ -1,6 +1,6 @@
 export interface UserCreate {
   id: string,
-  session_id: string,
+  session_id?: string,
   name: string,
   email: string
 }

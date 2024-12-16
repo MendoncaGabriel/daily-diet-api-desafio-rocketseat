@@ -4,7 +4,7 @@ class KnexUserRepository {
   async create(
     data: {
       id: string,
-      session_id: string,
+      session_id?: string,
       name: string,
       email: string
     }
