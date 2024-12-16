@@ -3,7 +3,7 @@ import { KnexUserRepository } from "../../../repositorys/knex/knexUserRepository
 import { CreateUserUseCase } from "../../../usecases/user/createUserUseCase";
 import { FastifyRequest } from "fastify";
 
-class CreateMealController {
+class CreateUserController {
   async handle(req: FastifyRequest) {
 
     const createUserSchema = z.object({
@@ -23,4 +23,4 @@ class CreateMealController {
   }
 }
 
-export { CreateMealController }
+export { CreateUserController }
