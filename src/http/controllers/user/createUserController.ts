@@ -7,7 +7,7 @@ class CreateUserController {
   async handle(req: FastifyRequest) {
 
     const createUserSchema = z.object({
-      session_id: z.string().optional(),
+      session_id: z.string(),
       email: z.string(),
       name: z.string()
     })

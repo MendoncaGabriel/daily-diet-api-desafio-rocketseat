@@ -10,10 +10,11 @@ class CreateUserUseCase {
     {email, name, session_id}: {
       email: string,
       name: string,
-      session_id?: string
+      session_id: string
     }
   ){  
     const id = randomUUID()
+    
     await this.userRepository.create({
       id,
       email,
