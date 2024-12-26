@@ -45,4 +45,13 @@ export interface MealsRepository {
     { id }: { id: string }
   ): Promise<Meal | null>;
 
+  getMetrics(
+    { user_id }: { user_id: string }
+  ): Promise<{
+    total: string | number;
+    diet: string | number;
+    off_diet: string | number;
+    best_diet_sequence: any;
+  }>
+
 }

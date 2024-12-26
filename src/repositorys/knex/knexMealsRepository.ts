@@ -56,6 +56,41 @@ class KnextMealsRepository implements MealsRepository {
     return meal;
   }
 
+  async getMetrics(
+    { user_id }: { user_id: string }
+  ): Promise<{
+    total: string | number;
+    diet: string | number;
+    off_diet: string | number;
+    best_diet_sequence: any;
+  }> {
+
+    const totalMeals = await knex('meals')
+      .count('id', { as: 'total' })
+      .where('user_id', user_id)
+      .first();
+
+    const dietMeals = await knex('meals')
+      .count('id', { as: 'diet' })
+      .where('user_id', user_id)
+      .andWhere('is_on_diet', true)
+      .first();
+
+    const offDietMeals = await knex('meals')
+      .count('id', { as: 'off_diet' })
+      .where('user_id', user_id)
+      .andWhere('is_on_diet', false)
+      .first();
+
+
+
+    return {
+      total: totalMeals?.total ?? 0,
+      diet: dietMeals?.diet ?? 0,
+      off_diet: offDietMeals?.off_diet ?? 0,
+      best_diet_sequence: Number(dietMeals?.diet ?? 0) - Number(offDietMeals?.off_diet ?? 0) > 0 ? Number(dietMeals?.diet ?? 0) - Number(offDietMeals?.off_diet ?? 0) : 0
+    }
+  }
 }
 
 export { KnextMealsRepository }
