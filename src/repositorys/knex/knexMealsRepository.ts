@@ -1,6 +1,7 @@
 import { knex } from "../../knex_db"
+import { Meal, MealsRepository } from "../mealsRepository"
 
-class KnextMealsRepository {
+class KnextMealsRepository implements MealsRepository {
   async create(
     data: {
       id: string,
@@ -45,11 +46,14 @@ class KnextMealsRepository {
     return meals
   }
 
-  async listMealById(
-    { id }: { id: string }
-  ) {
-    const meal = await knex('meals').where({ id }).select()
-    return meal
+  async listMealById({ id }: { id: string }): Promise<Meal | null> {
+    const meal = await knex<Meal>('meals').where({ id }).first();
+
+    if (!meal) {
+      return null
+    }
+
+    return meal;
   }
 
 }

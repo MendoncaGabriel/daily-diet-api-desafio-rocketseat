@@ -39,9 +39,10 @@ export interface MealsRepository {
 
   listUserMeals(
     { user_id }: { user_id: string }
-  ): Promise<Meal[]>
+  ): Promise<Meal[] | null>
 
   listMealById(
     { id }: { id: string }
-  ): Promise<Meal>
+  ): Promise<Meal | null>;
+
 }
