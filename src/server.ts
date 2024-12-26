@@ -4,5 +4,5 @@ import { app } from './app'
 app.listen({
   port: env.PORT
 }, () => {
-  console.log('🚀 HTTP server Running!')
+  console.log(`🚀 HTTP server Running!, port: ${env.PORT}`)
 })
