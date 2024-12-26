@@ -1,4 +1,4 @@
-import { knex } from "../../database/knex_db"
+import { knex } from "../../knex_db"
 
 class KnexUserRepository {
   async create(
